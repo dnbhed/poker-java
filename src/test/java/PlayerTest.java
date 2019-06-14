@@ -26,14 +26,20 @@ public class PlayerTest {
 
     @Test
     public void playerCanRequestCard(){
-        player.requestCard(card);
+        player.getCard(card);
         assertEquals(1, player.getNumOfCards());
     }
 
     @Test
     public void playerCanCheckCardValue(){
-        player.requestCard(card);
+        player.getCard(card);
         assertEquals(2, player.checkCardValue());
+    }
+
+    @Test
+    public void playerCanShowHand(){
+        player.getCard(card);
+        assertEquals(card, player.showHand().get(0));
     }
 
 }

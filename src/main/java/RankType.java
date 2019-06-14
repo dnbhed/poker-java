@@ -1,9 +1,9 @@
 public enum RankType {
 
-    ACE(1),
-    KING(10),
-    QUEEN(10),
-    JACK(10),
+    ACE(14),
+    KING(13),
+    QUEEN(12),
+    JACK(11),
     TEN(10),
     NINE(9),
     EIGHT(8),

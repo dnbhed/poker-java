@@ -23,8 +23,8 @@ public class CardTest {
     }
 
     @Test
-    public void aceHasValueOfEleven(){
-        assertEquals(1, card.getValueFromEnum());
+    public void aceHasValueOf14(){
+        assertEquals(14, card.getValueFromEnum());
     }
 
 }

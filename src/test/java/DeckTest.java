@@ -36,14 +36,6 @@ public class DeckTest {
     }
 
     @Test
-    public void canShuffleDeck(){
-        deck.populate();
-        deck.shuffle();
-        assertNotEquals(card.getRank(), deck.getFirstCard().getRank());
-        assertNotEquals(card.getSuit(), deck.getFirstCard().getSuit());
-    }
-
-    @Test
     public void canDealCard(){
         deck.populate();
         deck.shuffle();

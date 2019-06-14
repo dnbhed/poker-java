@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
 
@@ -18,11 +19,16 @@ public class Player {
         return this.hand.size();
     }
 
-    public void requestCard(Card card){
+    public void getCard(Card card){
         this.hand.add(card);
     }
 
     public int checkCardValue() {
         return this.hand.get(0).getValueFromEnum();
+    }
+
+
+    public ArrayList showHand() {
+        return this.hand;
     }
 }
