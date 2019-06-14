@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Player {
@@ -27,8 +28,34 @@ public class Player {
         return this.hand.get(0).getValueFromEnum();
     }
 
-
     public ArrayList showHand() {
         return this.hand;
+    }
+
+    public void orderHandByRank() {
+        ArrayList<Card> sortedHand = new ArrayList<Card>();
+        for (Card card : this.hand) {
+            int cardRank = card.getRank().getValue();
+            if(sortedHand.isEmpty()){
+                sortedHand.add(0, card);
+            } else if (cardRank < sortedHand.get(0).getRank().getValue()){
+                sortedHand.add(0, card);
+            } else if (sortedHand.size() == 1){
+                sortedHand.add(1, card);
+            } else if (cardRank < sortedHand.get(1).getRank().getValue()){
+                sortedHand.add(1, card);
+            } else if (sortedHand.size() == 2){
+                sortedHand.add(2, card);
+            } else if (cardRank < sortedHand.get(2).getRank().getValue()){
+                sortedHand.add(2, card);
+            } else if (sortedHand.size() == 3){
+                sortedHand.add(3, card);
+            } else if(cardRank < sortedHand.get(3).getRank().getValue()){
+                sortedHand.add(3, card);
+            } else {
+                sortedHand.add(4, card);
+            }
+        }
+        this.hand = sortedHand;
     }
 }
