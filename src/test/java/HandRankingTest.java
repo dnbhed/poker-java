@@ -36,7 +36,7 @@ public class HandRankingTest {
         player.orderHandByRank();
         ArrayList<Card> hand = player.showHand();
         handRanking = new HandRanking(hand);
-        assertEquals("Flush", handRanking.checkIsFlush());
+        assertEquals(HandRankType.FLUSH, handRanking.checkIsFlush());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class HandRankingTest {
         player.orderHandByRank();
         ArrayList<Card> hand = player.showHand();
         handRanking = new HandRanking(hand);
-        assertEquals("Straight", handRanking.checkIsStraight());
+        assertEquals(HandRankType.STRAIGHT, handRanking.checkIsStraight());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class HandRankingTest {
         player.orderHandByRank();
         ArrayList<Card> hand = player.showHand();
         handRanking = new HandRanking(hand);
-        assertEquals("Straight Flush", handRanking.checkIsStraightFlush());
+        assertEquals(HandRankType.STRAIGHTFLUSH, handRanking.checkIsStraightFlush());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class HandRankingTest {
         player.getCard(three);
         hand = player.showHand();
         handRanking = new HandRanking(hand);
-        assertEquals("Four of a Kind", handRanking.checkIsFourOfAKind());
+        assertEquals(HandRankType.FOUROFAKIND, handRanking.checkIsFourOfAKind());
     }
 
     @Test
@@ -80,9 +80,9 @@ public class HandRankingTest {
         player.getCard(two);
         hand = player.showHand();
         handRanking = new HandRanking(hand);
-        assertEquals("Full House", handRanking.checkIsFullHouse());
+        assertEquals(HandRankType.FULLHOUSE, handRanking.checkIsFullHouse());
         player.orderHandByRank();
-        assertEquals("Full House", handRanking.checkIsFullHouse());
+        assertEquals(HandRankType.FULLHOUSE, handRanking.checkIsFullHouse());
     }
 
     @Test
@@ -95,7 +95,7 @@ public class HandRankingTest {
         player.getCard(three);
         hand = player.showHand();
         handRanking = new HandRanking(hand);
-        assertEquals("Three of a Kind", handRanking.checkIsThreeOfAKind());
+        assertEquals(HandRankType.THREEOFAKIND, handRanking.checkIsThreeOfAKind());
     }
 
     @Test
@@ -108,9 +108,9 @@ public class HandRankingTest {
         player.getCard(three);
         hand = player.showHand();
         handRanking = new HandRanking(hand);
-        assertEquals("Two Pair", handRanking.checkIsTwoPair());
+        assertEquals(HandRankType.TWOPAIR, handRanking.checkIsTwoPair());
         player.orderHandByRank();
-        assertEquals("Two Pair", handRanking.checkIsTwoPair());
+        assertEquals(HandRankType.TWOPAIR, handRanking.checkIsTwoPair());
     }
 
     @Test
@@ -123,9 +123,9 @@ public class HandRankingTest {
         player.getCard(three);
         hand = player.showHand();
         handRanking = new HandRanking(hand);
-        assertEquals("One Pair", handRanking.checkIsOnePair());
+        assertEquals(HandRankType.ONEPAIR, handRanking.checkIsOnePair());
         player.orderHandByRank();
-        assertEquals("One Pair", handRanking.checkIsOnePair());
+        assertEquals(HandRankType.ONEPAIR, handRanking.checkIsOnePair());
     }
 
     @Test

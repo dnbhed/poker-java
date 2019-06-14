@@ -11,6 +11,8 @@ public class DealerTest {
     Player player2;
     Deck deck;
     Card card;
+    Card two;
+    Card three;
 
     @Before
     public void before(){
@@ -19,7 +21,8 @@ public class DealerTest {
         player2 = new Player("Jim");
         deck = new Deck();
         card = new Card(SuitType.HEARTS, RankType.KING);
-
+        two = new Card(SuitType.HEARTS, RankType.TWO);
+        three = new Card(SuitType.HEARTS, RankType.THREE);
     }
 
     @Test
@@ -53,16 +56,23 @@ public class DealerTest {
         dealer.dealCards(deck, 1);
         assertEquals(50, deck.getNumOfCards());
     }
-
-
-
+    
     @Test
     public void dealerCanCheckWhoWins(){
         deck.populate();
         dealer.addPlayer(player1);
         dealer.addPlayer(player2);
-        dealer.dealCards(deck, 5);
-        assertNotEquals(null, dealer.checkWhoWins());
+        player1.getCard(two);
+        player1.getCard(two);
+        player1.getCard(two);
+        player1.getCard(two);
+        player1.getCard(three);
+        player2.getCard(two);
+        player2.getCard(two);
+        player2.getCard(two);
+        player2.getCard(three);
+        player2.getCard(three);
+        assertEquals(player1, dealer.checkWhoWins());
     }
 
 }

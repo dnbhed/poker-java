@@ -25,13 +25,15 @@ public class Dealer {
         return this.players.size();
     }
 
-    public String checkWhoWins() {
-        String winner = null;
+    public Player checkWhoWins() {
+        Player winner = players.get(0);
         for(Player player: players){
-            HandRanking handRanking = new HandRanking(player.showHand());
-
+            HandRanking currentWinnerRanking = new HandRanking(winner.showHand());
+            HandRanking playerHandRanking = new HandRanking(player.showHand());
+            if(playerHandRanking.rateHand().getValue() < currentWinnerRanking.rateHand().getValue()){
+                winner = player;
+            }
         }
-
         return winner;
     }
 

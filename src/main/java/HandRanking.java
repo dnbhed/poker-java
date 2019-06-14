@@ -4,24 +4,24 @@ import java.util.Collections;
 public class HandRanking {
 
     private ArrayList<Card> hand;
+    private HandRankType rank;
 
     public HandRanking(ArrayList<Card> hand){
         this.hand = hand;
+        this.rank = HandRankType.HIGHCARD;
     }
 
-    public String checkIsFlush(){
-        String result = null;
+    public HandRankType checkIsFlush(){
         SuitType suit = this.hand.get(0).getSuit();
         for(Card card : this.hand) {
            if (card.getSuit() == suit) {
-                result = "Flush";
+                this.rank = HandRankType.FLUSH;
             }
         }
-        return result;
+        return this.rank;
     }
 
-    public String checkIsStraight() {
-        String result = null;
+    public HandRankType checkIsStraight() {
 
         int card1value = this.hand.get(0).getRank().getValue();
         int card2value = this.hand.get(1).getRank().getValue();
@@ -37,37 +37,36 @@ public class HandRanking {
                 &&
                 card5value == card4value + 1
         ){
-            result = "Straight";
+            this.rank = HandRankType.STRAIGHT;
         }
-        return result;
+        return this.rank;
     }
 
-    public String checkIsStraightFlush() {
-        String result = null;
-        String flush = checkIsFlush();
-        String straight = checkIsStraight();
-        if (flush != null && straight != null){
-            result = "Straight Flush";
+    public HandRankType checkIsStraightFlush() {
+        HandRankType flush = checkIsFlush();
+        HandRankType straight = checkIsStraight();
+        if (flush != HandRankType.HIGHCARD && straight != HandRankType.HIGHCARD){
+            this.rank = HandRankType.STRAIGHTFLUSH;
         }
-        return result;
+        return this.rank;
     }
 
-    public String checkIsFourOfAKind() {
-        String result = null;
+    public HandRankType checkIsFourOfAKind() {
+
         int card1value = this.hand.get(0).getRank().getValue();
         int card2value = this.hand.get(1).getRank().getValue();
         int card4value = this.hand.get(3).getRank().getValue();
         int card5value = this.hand.get(4).getRank().getValue();
 
         if(card1value == card4value || card2value == card5value){
-            result = "Four of a Kind";
+            this.rank = HandRankType.FOUROFAKIND;
         }
 
-        return result;
+        return this.rank;
     }
 
-    public String checkIsThreeOfAKind() {
-        String result = null;
+    public HandRankType checkIsThreeOfAKind() {
+
         int card1value = this.hand.get(0).getRank().getValue();
         int card2value = this.hand.get(1).getRank().getValue();
         int card3value = this.hand.get(2).getRank().getValue();
@@ -75,14 +74,14 @@ public class HandRanking {
         int card5value = this.hand.get(4).getRank().getValue();
 
         if(card1value == card3value || card3value == card5value || card2value == card4value){
-            result = "Three of a Kind";
+            this.rank = HandRankType.THREEOFAKIND;
         }
 
-        return result;
+        return this.rank;
     }
 
-    public String checkIsTwoPair() {
-        String result = null;
+    public HandRankType checkIsTwoPair() {
+
         int card1value = this.hand.get(0).getRank().getValue();
         int card2value = this.hand.get(1).getRank().getValue();
         int card3value = this.hand.get(2).getRank().getValue();
@@ -95,13 +94,13 @@ public class HandRanking {
                 ||
                 (card1value == card2value && card4value == card5value)
         ){
-            result = "Two Pair";
+            this.rank = HandRankType.TWOPAIR;
         }
-        return result;
+        return this.rank;
     }
 
-    public String checkIsOnePair() {
-        String result = null;
+    public HandRankType checkIsOnePair() {
+
         int card1value = this.hand.get(0).getRank().getValue();
         int card2value = this.hand.get(1).getRank().getValue();
         int card3value = this.hand.get(2).getRank().getValue();
@@ -109,13 +108,13 @@ public class HandRanking {
         int card5value = this.hand.get(4).getRank().getValue();
 
         if(card1value == card2value || card2value == card3value || card3value == card4value || card4value == card5value){
-            result = "One Pair";
+            this.rank = HandRankType.ONEPAIR;
         }
-        return result;
+        return this.rank;
     }
 
-    public String checkIsFullHouse() {
-        String result = null;
+    public HandRankType checkIsFullHouse() {
+
         int card1value = this.hand.get(0).getRank().getValue();
         int card2value = this.hand.get(1).getRank().getValue();
         int card3value = this.hand.get(2).getRank().getValue();
@@ -123,14 +122,13 @@ public class HandRanking {
         int card5value = this.hand.get(4).getRank().getValue();
 
         if ((card1value == card2value && card3value == card5value) || (card1value == card3value && card4value == card5value)) {
-        result = "Full House";
+        this.rank = HandRankType.FULLHOUSE;
         }
 
-        return result;
+        return this.rank;
     }
 
-    public String rateHand() {
-        String result = null;
+    public HandRankType rateHand() {
         if(checkIsStraightFlush() != null){
             return checkIsStraightFlush();
         } else if(checkIsFourOfAKind() != null){
@@ -147,7 +145,7 @@ public class HandRanking {
             return checkIsTwoPair();
         } else if (checkIsOnePair() != null){
             return checkIsOnePair();
-        } else result = "High Card";
-        return result;
+        }
+        return this.rank;
     }
 }
