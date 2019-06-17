@@ -15,8 +15,10 @@ public class HandRanking {
         SuitType suit = this.hand.get(0).getSuit();
         for(Card card : this.hand) {
            if (card.getSuit() == suit) {
-                this.rank = HandRankType.FLUSH;
-            }
+               this.rank = HandRankType.FLUSH;
+            } else {
+               this.rank = HandRankType.HIGHCARD;
+           }
         }
         return this.rank;
     }

@@ -28,14 +28,19 @@ public class Player {
         return this.hand.get(0).getValueFromEnum();
     }
 
+    public int checkLastCardValue() {
+        return this.hand.get(4).getValueFromEnum();
+    }
+
     public ArrayList showHand() {
         return this.hand;
     }
 
     public void orderHandByRank() {
         ArrayList<Card> sortedHand = new ArrayList<Card>();
+        int cardRank = 1;
         for (Card card : this.hand) {
-            int cardRank = card.getRank().getValue();
+            cardRank = card.getRank().getValue();
             if(sortedHand.isEmpty()){
                 sortedHand.add(0, card);
             } else if (cardRank < sortedHand.get(0).getRank().getValue()){

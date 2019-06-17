@@ -33,10 +33,40 @@ public class Dealer {
             if(playerHandRanking.rateHand().getValue() < currentWinnerRanking.rateHand().getValue()){
                 winner = player;
             }
+//            if(playerHandRanking.rateHand().getValue() == currentWinnerRanking.rateHand().getValue()){
+//                winner = checkWhoWinsEqualHands();
+//            }
         }
         return winner;
     }
 
+    public Player checkWhoWinsHighCard() {
+        Player winner = players.get(0);
+        for(Player player: players){
+            int currentWinnerRanking = winner.checkLastCardValue();
+            int playerHandRanking = player.checkLastCardValue();
+            if(playerHandRanking > currentWinnerRanking){
+                winner = player;
+            }
+        }
+        return winner;
+    }
+
+//    public Player checkWhoWinsOnePair() {
+//        Player winner = players.get(0);
+//        for(Player player: players){
+//
+//        }
+//
+//
+//
+//        return winner;
+//    }
 
 
+//    public Player checkWhoWinsFullHouse() {
+//
+//
+//        return winner;
+//    }
 }
