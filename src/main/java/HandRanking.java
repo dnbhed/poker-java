@@ -131,21 +131,21 @@ public class HandRanking {
     }
 
     public HandRankType rateHand() {
-        if(checkIsStraightFlush() != null){
+        if(checkIsStraightFlush() != HandRankType.HIGHCARD){
             return checkIsStraightFlush();
-        } else if(checkIsFourOfAKind() != null){
+        } else if(checkIsFourOfAKind() != HandRankType.HIGHCARD){
             return checkIsFourOfAKind();
-        } else if(checkIsFullHouse()!= null){
+        } else if(checkIsFullHouse()!= HandRankType.HIGHCARD){
             return checkIsFullHouse();
-        } else if(checkIsFlush() != null){
+        } else if(checkIsFlush() != HandRankType.HIGHCARD){
             return checkIsFlush();
-        } else if(checkIsStraight() != null){
+        } else if(checkIsStraight() != HandRankType.HIGHCARD){
             return checkIsStraight();
-        } else if(checkIsThreeOfAKind() != null){
+        } else if(checkIsThreeOfAKind() != HandRankType.HIGHCARD){
             return checkIsThreeOfAKind();
-        } else if (checkIsTwoPair() != null){
+        } else if (checkIsTwoPair() != HandRankType.HIGHCARD){
             return checkIsTwoPair();
-        } else if (checkIsOnePair() != null){
+        } else if (checkIsOnePair() != HandRankType.HIGHCARD){
             return checkIsOnePair();
         }
         return this.rank;
